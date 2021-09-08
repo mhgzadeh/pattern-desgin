@@ -1,5 +1,4 @@
 class Singleton:
-
     
     @classmethod
     def __new__(cls, *args, **kwargs):
@@ -9,10 +8,10 @@ class Singleton:
 
 
 if __name__ == '__main__':
-    s1 = Singleton('Mohammad')
-    s2 = Singleton('Amin')
-    s3 = Singleton('Ali')
-    s4 = Singleton('Farahnaz')
+    s1 = Singleton()
+    s2 = Singleton()
+    s3 = Singleton()
+    s4 = Singleton()
 
     print(id(s1))
     print(id(s2))
