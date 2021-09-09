@@ -18,25 +18,53 @@ class DetailBase(ABC):
 
 
 class RugsDetail(DetailBase):
-    pass
+    def __init__(self, rugs):
+        self.rugs = rugs
+
+    def show(self):
+        return f"Rugs detial: {self.rugs._name}"
+
+
+class RugsPrice(DetailBase):
+    def __init__(self, rugs):
+        self.rugs = rugs
+
+    def show(self):
+        return f"Rugs price: {self.rugs._price}"
+
+
+class GiftCardDetail(DetailBase):
+    def __init__(self, card):
+        self.card = card
+
+    def show(self):
+        return f"company: {self.card.company}"
+
+
+class GiftCardPrice(DetailBase):
+    def __init__(self, card):
+        self.card = card
+
+    def show(self):
+        return f"min price: {self.card.min_price}\tmax price: {self.card.max_price}"
 
 
 class Rugs(ProductBase):
 
     def __init__(self, name, price):
-        self.name = name
-        self.price = price
+        self._name = name
+        self._price = price
 
     @property
     def detail(self):
-        return RugsDetail()
+        return RugsDetail(self)
 
     @property
     def price(self):
-        return PriceDetail()
+        return RugsPrice(self)
 
 
-class GiftCard:
+class GiftCard(ProductBase):
 
     def __init__(self, company, min_price, max_price):
         self.company = company
@@ -45,11 +73,11 @@ class GiftCard:
 
     @property
     def detail(self):
-        return GiftCardDetail()
+        return GiftCardDetail(self)
 
     @property
     def price(self):
-        return GiftCardPrice()
+        return GiftCardPrice(self)
 
 
 if __name__ == '__main__':
@@ -62,4 +90,5 @@ if __name__ == '__main__':
     products = [r1, r2, g1, g2]
 
     for product in products:
-        pass
+        print(product.detail.show())
+        print(product.price.show())
