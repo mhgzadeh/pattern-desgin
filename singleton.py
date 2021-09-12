@@ -1,4 +1,5 @@
 class Singleton:
+
     @classmethod
     def __new__(cls, *args, **kwargs):
         if not hasattr(cls, 'instance'):
@@ -7,11 +8,10 @@ class Singleton:
 
 
 if __name__ == '__main__':
-    # s1 = Singleton(fname='Mohammad', lname='Gholizadeh', age=25)
-    # s2 = Singleton(fname='Mohammad', lname='Gholizadeh', age=25)
-    # s3 = Singleton(fname='Mohammad', lname='Gholizadeh', age=25)
-    # s4 = Singleton(fname='Mohammad', lname='Gholizadeh', age=25)
     s1 = Singleton()
+    s2 = Singleton()
+    s3 = Singleton()
+    s4 = Singleton()
 
     print(id(s1))
     print(id(s2))
