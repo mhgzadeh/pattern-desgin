@@ -6,17 +6,20 @@ class Message:
         self.subject = subject
         self.body = body
         self.sender = sender
-        self.flow = [sender]
+    #     self.flow = [sender]
 
-    @property
-    def current(self):
-        return self.flow[-1]
+    # @property
+    # def current(self):
+    #     return self.flow[-1]
 
     def send(self, to_user):
-        if to_user.__class__ not in self.current.allowed:
-            print(f"{self.current.__class__} is not allowed to send email to {to_user.__class__}")
+        if to_user.__class__ not in self.sender.allowed:
+            print(to_user.__class__, self.sender.allowed)
+            print(
+                f"{self.sender.__class__} is not allowed to send email to {to_user.__class__}")
         else:
-            self.flow.append(to_user)
+            # self.flow.append(to_user)
+            print(to_user.__class__, self.sender.allowed)
             print(f"message send to {to_user.__class__}")
 
 
@@ -44,7 +47,7 @@ class Operator(AbsractUser):
 
 
 class Client(AbsractUser):
-    allowed = [Operator]
+    allowed = [Operator, InternalManager]
 
 
 if __name__ == "__main__":
@@ -57,6 +60,6 @@ if __name__ == "__main__":
     message = Message("Issue #1234", "Issue description", client)
 
     message.send(opt)
-    message.send(spr)
-    message.send(inm)
-    message.send(mnd)
+    # message.send(spr)
+    # message.send(inm)
+    # message.send(mnd)
