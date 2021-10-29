@@ -5,6 +5,17 @@ class Singleton:
         if not hasattr(cls, 'instance'):
             cls.instance = super(*args, **kwargs)
         return cls.instance
+    
+
+# Second Method
+class Singleton2:
+    _instance = None
+
+    @classmethod
+    def __new__(cls, *args, **kwargs):
+        if cls._instance is None:
+            cls._instance = super().__new__(cls)
+        return cls._instance
 
 
 if __name__ == '__main__':
